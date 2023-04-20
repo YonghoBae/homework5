@@ -32,6 +32,8 @@ int main(void)
 	element data; // 스택 원소용 변수 data 선언
 	char command; // 기능 입력용 변수 command 선언
 
+	printf("[----- [Yongho Bae] [2020039008] -----]");
+
 	do{// 한번은 무조건 실행
 		printf("\n-----------------------------------------------------\n");
 		printf("                     Circular Q                   \n");
@@ -141,8 +143,8 @@ void printQ(QueueType *cQ)
 {
 	int i, first, last; //변수 i,first, last 선언
 
-	first = (cQ->front + 1)%MAX_QUEUE_SIZE; //first에 front대입
-	last = (cQ->rear + 1)%MAX_QUEUE_SIZE;  //last에 rear대입
+	first = (cQ->front + 1)%MAX_QUEUE_SIZE; //first에 front앞의 위치 대입
+	last = (cQ->rear + 1)%MAX_QUEUE_SIZE;  //last에 rear앞의 위치 대입
 
 	printf("Circular Queue : [");
 
@@ -150,8 +152,7 @@ void printQ(QueueType *cQ)
 	while(i != last){ //i가 last가 될떄까지 반복
 		printf("%3c", cQ->queue[i]);
 		i = (i+1)%MAX_QUEUE_SIZE;
-
-	}
+	} //큐에 있는 원소 모두 출력
 	printf(" ]\n");
 }
 
@@ -165,9 +166,9 @@ void debugQ(QueueType *cQ)
 		if(i == cQ->front) {
 			printf("  [%d] = front\n", i);
 			continue;
-		}
-		printf("  [%d] = %c\n", i, cQ->queue[i]);
+		} //front 위치 출력
+		printf("  [%d] = %c\n", i, cQ->queue[i]); //CQ에 있는 원소값 출력
 
 	}
-	printf("front = %d, rear = %d\n", cQ->front, cQ->rear);
+	printf("front = %d, rear = %d\n", cQ->front, cQ->rear); //현재 front, rear 값 출력
 }
